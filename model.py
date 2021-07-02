@@ -7,7 +7,7 @@ import random,shutil
 from keras.models import Sequential
 from keras.layers import Dropout,Conv2D,Flatten,Dense, MaxPooling2D, BatchNormalization
 from keras.models import load_model
-
+from tensorflow.keras.applications import VGG16
 
 def generator(dir, gen=image.ImageDataGenerator(rescale=1./255), shuffle=True,batch_size=1,target_size=(24,24),class_mode='categorical' ):
 
@@ -24,6 +24,10 @@ print(SPE,VS)
 
 # img,labels= next(train_batch)
 # print(img.shape)
+#base = VGG16(weights = 'imagenet',
+#                 include_top = False,
+#                 input_shape = (25,25,1))
+#model = base.output
 
 model = Sequential([
     Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(24,24,1)),
